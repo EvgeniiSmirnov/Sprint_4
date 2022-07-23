@@ -11,5 +11,4 @@ public class Practicum {
         Account account = new Account(cardName);
         account.checkNameToEmboss();
     }
-
 }

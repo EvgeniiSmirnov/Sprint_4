@@ -52,4 +52,3 @@ public class CheckNameTest {
         assertEquals(expected, actual);
     }
 }
-
