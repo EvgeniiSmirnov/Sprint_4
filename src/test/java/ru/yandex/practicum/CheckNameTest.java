@@ -14,15 +14,14 @@ public class CheckNameTest {
 
     private final String checkName;
     private final boolean expected;
-    private final String comment;
+    static String comment;
 
     public CheckNameTest(String checkName, boolean expected, String comment) {
         this.checkName = checkName;
         this.expected = expected;
-        this.comment = comment;
+        CheckNameTest.comment = comment;
     }
 
-    // Параметризация
     @Parameterized.Parameters(name = "Проверка {1} потому что {2}")
     public static Object[][] genData() {
         return new Object[][]{
