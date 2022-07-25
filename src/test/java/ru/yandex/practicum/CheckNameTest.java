@@ -14,30 +14,34 @@ public class CheckNameTest {
 
     private final String checkName;
     private final boolean expected;
+    private final String comment;
 
-    public CheckNameTest(String checkName, boolean expected) {
+    public CheckNameTest(String checkName, boolean expected, String comment) {
         this.checkName = checkName;
         this.expected = expected;
+        this.comment = comment;
     }
 
     // Параметризация
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Проверка {1} потому что {2}")
     public static Object[][] genData() {
         return new Object[][]{
                 // Пробелы
-                {" ", false},                   // Только пробел
-                {" Морти", false},              // Пробел в начале строки
-                {"Морти ", false},              // Пробел в конце строки
-                {"Морти", false},               // Нет пробела
-                {"Морти Проверкин", true},      // Один пробел в центре
-                {"Морти  Проверкин", false},    // Два пробела слитно
-                {"1 Морти Проверкин", false},    // Два пробела раздельно
+                {" ", false, "только пробел"},
+                {" Морти", false, "пробел в начале строки"},
+                {"Морти ", false, "пробел в конце строки"},
+                {"Морти", false, "нет пробела"},
+                {"Морти Проверкин", true, "один пробел в центре"},
+                {"Морти  Проверкин", false, "два пробела слитно"},
+                {"1 Морти Проверкин", false, "два пробела раздельно"},
                 // Символы
-                {"", false},                    // 0 символов
-                {"12", false},                  // 2 символа
-                {"1 2", true},                  // 3 символа
-                {"Морти Проверкин1234", true},  // 19 символов
-                {"Морти Проверкин12345", false},// 20 символов
+                {"", false, "0 символов"},
+                {"12", false, "2 символа"},
+                {"1 2", true, "3 символа"},
+                {"Морти Проверкин1234", true, "19 символов"},
+                {"Морти Проверкин12345", false, "20 символов"},
+                //  null
+                {null, false, "null"},
         };
     }
 

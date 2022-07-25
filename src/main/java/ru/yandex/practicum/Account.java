@@ -9,7 +9,11 @@ public class Account {
     }
 
     public boolean checkNameToEmboss() {
-        if (name.isEmpty()) {
+
+        if (name == null) {
+            System.out.println("Имя не задано");
+            return false;
+        } else if (name.isEmpty()) {
             System.out.println("Имя не задано");
             return false;
         } else if (name.length() < 3 || name.length() > 19) {
